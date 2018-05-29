@@ -5,7 +5,49 @@ get_header();
 <section class="rev_slider_wrapper">
   <div id="rev_slider_3" class="rev_slider"  data-version="5.0">
     <ul>
-      <!-- SLIDE  -->
+    <?php
+    $args = array( 'post_type' => 'home_slider');
+    $all_slider = new WP_Query( $args );
+    if($all_slider->have_posts())
+    {
+      while ($all_slider->have_posts()) {
+        $all_slider->the_post();
+        $id = get_the_ID();
+
+        $category = get_the_category();
+      $link = get_category_link( $category[0]->term_id );
+        ?>
+        <li data-transition="fade">
+          <img src="<?php the_post_thumbnail_url('slider_img'); ?>"  alt="" data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
+           <div class="tp-caption  tp-resizeme" 
+              data-x="left" data-hoffset="20" 
+              data-y="top" data-voffset="300" 
+              data-transform_idle="o:1;"         
+              data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;" 
+              data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" 
+              data-mask_in="x:[100%];y:0;s:inherit;e:inherit;" 
+              data-splitin="none" 
+              data-splitout="none"
+              data-responsive_offset="on"
+              data-start="700">
+              
+              <div class="slide-content left-slide">
+
+                  <div class="big-title"><?= the_title() ?></div>
+                  <p><?php the_content(); ?></p>
+                  <div class="btns-box">
+                      <a href="<?php echo $link ; ?>" class="btn_fill">View More</a>
+                  </div>
+              </div>
+          </div>
+        </li>
+        <?php
+      }
+      
+    }
+    else
+    {
+      ?>
       <li data-transition="fade">
         <img src="<?php echo get_template_directory_uri(); ?>/images/banner-4.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
          <div class="tp-caption  tp-resizeme" 
@@ -21,68 +63,18 @@ get_header();
             data-start="700">
             
             <div class="slide-content left-slide">
-                <div class="title">Get First Class</div>
-                <div class="big-title">Real Property Advice</div>
-                <p>With over 10 years of experience helping businesses<br>to find comprehensive solutions.</p>
+
+                <div class="big-title">Dummy Slider</div>
+                <p>This is dummy slider</p>
                 <div class="btns-box">
-                    <a href="#." class="btn_brd">Read More</a>
-                    <a href="#." class="btn_fill">Contact us</a>
+                    <a href="#." class="btn_fill">View More</a>
                 </div>
             </div>
         </div>
       </li>
-      <!-- SLIDE  -->
-      <li data-transition="slideremoveright">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/banner-7.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
-        <div class="tp-caption  tp-resizeme" 
-            data-x="right" data-hoffset="20" 
-            data-y="top" data-voffset="300" 
-            data-transform_idle="o:1;"         
-            data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;" 
-            data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" 
-            data-mask_in="x:[100%];y:0;s:inherit;e:inherit;" 
-            data-splitin="none" 
-            data-splitout="none"
-            data-responsive_offset="on"
-            data-start="1500">
-            
-            <div class="slide-content right-slide">
-                <div class="title">Complete Your Dream With</div>
-                <div class="big-title">Idea Homes Real Estate</div>
-                <P>With over 10 years of experience helping businesses<br>to find comprehensive solutions.</P>
-                <div class="btns-box">
-                    <a href="#." class="btn_brd">Read More</a>
-                    <a href="#." class="btn_fill">Contact us</a>
-                </div>
-            </div>
-        </div>
-      </li>
-      <!-- SLIDE  --> 
-      <li data-transition="slideremoveleftt">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/banner-8.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
-        <div class="tp-caption  tp-resizeme" 
-            data-x="left" data-hoffset="20" 
-            data-y="top" data-voffset="300" 
-            data-transform_idle="o:1;"         
-            data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;" 
-            data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" 
-            data-mask_in="x:[100%];y:0;s:inherit;e:inherit;" 
-            data-splitin="none" 
-            data-splitout="none"
-            data-responsive_offset="on"
-            data-start="1500">
-            
-            <div class="slide-content left-slide">
-                <div class="title">The Best Theme For</div>
-                <div class="big-title">Real Estate Agency</div>
-                <p>With over 10 years of experience helping businesses<br>to find comprehensive solutions.</p>
-                <div class="btns-box">
-                    <a href="#." class="btn_brd">Read More</a>
-                    <a href="#." class="btn_fill">Contact us</a> 
-                </div>
-            </div>
-        </div>
-      </li>
+      <?php
+    }
+    ?>
     </ul>
   </div>
 </section>
@@ -103,164 +95,75 @@ get_header();
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4 col-sm-6">
-        <div class="property_item bottom40">
-          <div class="image">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-1.jpg" alt="listin" class="img-responsive">
-            <div class="property_meta">
-            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-            <span><i class="fa fa-bed"></i>2</span>
-            <span><i class="fa fa-bath"></i>1 Bathroom</span></div>
-            
-            <div class="overlay">
-            <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
+    <?php
+    if(have_posts())
+      {
+        while(have_posts())
+          {
+            the_post();
+            $propertyPrice = get_post_meta($post->ID, 'propertyPrice', true);
+            $propertySize = get_post_meta($post->ID, 'propertySize', true);
+            $bedRooms = get_post_meta($post->ID, 'bedRooms', true);
+            $bathRoom = get_post_meta($post->ID, 'bathRoom', true);
+            $propertyStatus = get_post_meta($post->ID, 'propertyStatus', true);
+            ?>
+            <div class="col-md-4 col-sm-6">
+              <div class="property_item bottom40">
+                <div class="image">
+                  <img style="width: 360px; height: 251px;" src="<?php the_post_thumbnail_url(); ?>" alt="listin" class="img-responsive">
+                  <div class="property_meta">
+                  <span><i class="fa fa-object-group"></i><?php echo $propertySize; ?> sq ft </span>
+                  <span><i class="fa fa-bed"></i><?= $bedRooms ?></span>
+                  <span><i class="fa fa-bath"></i><?=$bathRoom ?> Bathroom</span></div>
+                  <div class="price"><span class="tag"><?= $propertyStatus ?></span></div>
+                  <div class="overlay">
+                  <div class="centered"><a class="link_arrow white_border" href="<?php the_permalink() ?>">View Detail</a></div>
+                  </div>
+                </div>
+                <div class="proerty_content">
+                  <div class="proerty_text">
+                    <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+                    <span>45 Regent Street, London, UK</span>
+                    <p class="p-font-15"> <?= get_excerpt() ?></p>
+                  </div>
+                  <div class="favroute clearfix">
+                    <p class="pull-md-left">&#8377;<?= $propertyPrice ?></p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="proerty_content">
-            <div class="proerty_text">
-              <h3><a href="property-details-3.html">South Mervin Boulevard</a></h3>
-              <span>45 Regent Street, London, UK</span>
-              <p class="p-font-15">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis…</p>
-            </div>
-            <div class="favroute clearfix">
-              <p class="pull-md-left">$8,600 Per Month</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="property_item bottom40">
-          <div class="image">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-2.jpg" alt="listin" class="img-responsive">
-            <div class="property_meta">
-            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-            <span><i class="fa fa-bed"></i>2</span>
-            <span><i class="fa fa-bath"></i>1 Bathroom</span></div>
-           
-            <div class="overlay">
-            <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-            </div>
-          </div>
-          <div class="proerty_content">
-            <div class="proerty_text">
-              <h3><a href="property-details-3.html">The Helux villa</a></h3>
-              <span>45 Regent Street, London, UK</span>
-              <p class="p-font-15">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis…</p>
-            </div>
-            <div class="favroute clearfix">
-              <p class="pull-md-left">$5,600,000</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="property_item bottom40">
-          <div class="image">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-3.jpg" alt="listin" class="img-responsive">
-            <div class="property_meta">
-            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-            <span><i class="fa fa-bed"></i>2</span>
-            <span><i class="fa fa-bath"></i>1 Bathroom</span></div>
-            
-            <div class="overlay">
-            <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-            </div>
-          </div>
-          <div class="proerty_content">
-            <div class="proerty_text">
-              <h3><a href="property-details-3.html">House in New York City</a></h3>
-              <span>Merrick Way, Miami, USA</span>
-              <p class="p-font-15">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis…</p>
-            </div>
-            <div class="favroute clearfix">
-              <p class="pull-md-left">$8,600 Per Month</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="property_item bottom40">
-          <div class="image">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-4.jpg" alt="listin" class="img-responsive">
-            <div class="property_meta">
-            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-            <span><i class="fa fa-bed"></i>2</span>
-            <span><i class="fa fa-bath"></i>1 Bathroom</span></div>
-           
-            <div class="overlay">
-            <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-            </div>
-          </div>
-          <div class="proerty_content">
-            <div class="proerty_text">
-              <h3><a href="property-details-3.html">House in New York City</a></h3>
-              <span>Merrick Way, Miami, USA</span>
-              <p class="p-font-15">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis…</p>
-            </div>
-            <div class="favroute clearfix">
-              <p class="pull-md-left">$32,650,000</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="property_item bottom40">
-          <div class="image">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-5.jpg" alt="listin" class="img-responsive">
-            <div class="property_meta">
-            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-            <span><i class="fa fa-bed"></i>2</span>
-            <span><i class="fa fa-bath"></i>1 Bathroom</span></div>
-            
-            <div class="overlay">
-            <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-            </div>
-          </div>
-          <div class="proerty_content">
-            <div class="proerty_text">
-              <h3><a href="property-details-3.html">Triple Story</a></h3>
-              <span>Merrick Way, Miami, USA</span>
-              <p class="p-font-15">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis…</p>
-            </div>
-            <div class="favroute clearfix">
-              <p class="pull-md-left">$8, 600 Per Month</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="property_item bottom40">
-          <div class="image">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-6.jpg" alt="listin" class="img-responsive">
-            <div class="property_meta">
-            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-            <span><i class="fa fa-bed"></i>2</span>
-            <span><i class="fa fa-bath"></i>1 Bathroom</span></div>
-            
-            <div class="overlay">
-            <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-            </div>
-          </div>
-          <div class="proerty_content">
-            <div class="proerty_text">
-              <h3><a href="property-details-3.html">House in New York City</a></h3>
-              <span>Merrick Way, Miami, USA</span>
-              <p class="p-font-15">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis…</p>
-            </div>
-            <div class="favroute clearfix">
-              <p class="pull-md-left">$1,350,000</p>
-            </div>
-          </div>
-        </div>
-      </div>
+            <?php
+          }
+      }
+      else
+      {
+        echo "No Property Found.";
+      }
+    ?>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <ul class="pager">
-          <li><a href="#.">1</a></li>
-          <li class="active"><a href="#.">2</a></li>
-          <li><a href="#.">3</a></li>
-        </ul>
+        <?php 
+        
+        global $wp_query;
+$total = $wp_query->max_num_pages;
+// Only paginate if we have more than one page
+if ( $total > 1 )  {
+     // Get the current page
+     if ( !$current_page = get_query_var('paged') )
+          $current_page = 1;
+     // Structure of “format” depends on whether we’re using pretty permalinks
+     $format = empty( get_option('permalink_structure') ) ? '&page=%#%' : 'page/%#%/';
+     echo paginate_links(array(
+          'base' => get_pagenum_link(1) . '%_%',
+          'format' => $format,
+          'current' => $current_page,
+          'total' => $total,
+          'mid_size' => 4,
+          'type' => 'list'
+     ));
+}  
+        ?>
       </div>
     </div>
   </div>

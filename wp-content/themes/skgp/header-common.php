@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<title>SKGP | ABOUT US </title>
+<title>SKGP </title>
 <link rel="shortcut icon" href="images/short_icon1.png">
 <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -31,7 +31,7 @@
   <div id="header-bottom">
     <div class="container">
       <div class="row">
-        <div class="col-md-2 hidden-xs hidden-sm"><a href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/images/logo-white2.png" alt="logo"/></a></div>
+        <div class="col-md-2 hidden-xs hidden-sm"><a href="<?php echo site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo-white2.png" alt="logo"/></a></div>
         <div class="col-md-10 col-sm-12 col-xs-12">
           <div class="get-tuch text-left top20">
             <i class="icon-telephone114"></i>
@@ -105,7 +105,7 @@
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
             <i class="fa fa-bars"></i></button>
-            <a class="navbar-brand sticky_logo" href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/images/logo1.png" class="logo" alt=""></a>
+            <a class="navbar-brand sticky_logo" href="<?php echo site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo1.png" class="logo" alt=""></a>
           </div>
           <!-- End Header Navigation --> 
 

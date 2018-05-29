@@ -33,136 +33,86 @@ get_header('common');
       <div class="col-md-8 col-sm-12 col-xs-12">
         <form class="findus">
           <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <div class="property_item heading_space">
-                <div class="image">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-1.jpg" alt="listin" class="img-responsive">
-                  <div class="overlay">
-                    <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-                  </div>
-                  
-                  <div class="price"><span class="tag">For Sale</span></div>
-                  <div class="property_meta">
-                    <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                    <span><i class="fa fa-bed"></i>2</span>
-                    <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                  </div>
-                </div>
-                <div class="proerty_content">
-                  <div class="proerty_text">
-                    <h3><a href="property-details-3.html">House in New York City</a></h3>
-                    <span class="bottom10">Merrick Way, Miami, USA</span>
-                    <p><strong>$83,600,200</strong></p>
-                  </div>
-                  <div class="favroute clearfix">
-                    <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                    <ul class="pull-right">
-                      <li><a href="#."><i class="icon-video"></i></a></li>
-                      <li><a href="#."><i class="icon-like"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <div class="property_item heading_space">
-                <div class="image">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-1.jpg" alt="listin" class="img-responsive">
-                  <div class="overlay">
-                    <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-                  </div>
-                  
-                  <div class="price"><span class="tag">For Sale</span></div>
-                  <div class="property_meta">
-                    <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                    <span><i class="fa fa-bed"></i>2</span>
-                    <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                  </div>
-                </div>
-                <div class="proerty_content">
-                  <div class="proerty_text">
-                    <h3><a href="property-details-3.html">House in New York City</a></h3>
-                    <span class="bottom10">Merrick Way, Miami, USA</span>
-                    <p><strong>$83,600,200</strong></p>
-                  </div>
-                  <div class="favroute clearfix">
-                    <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                    <ul class="pull-right">
-                      <li><a href="#."><i class="icon-video"></i></a></li>
-                      <li><a href="#."><i class="icon-like"></i></a></li>
-                    </ul>
+          <?php
+          $current_cat_id  = get_query_var('cat');
+          $showposts = 10;
+          $args = array('cat' => $current_cat_id, 'orderby' => 'post_date', 'order' => 'DESC', 'posts_per_page' => $showposts,'post_status' => 'publish');
+          query_posts($args);
+            if (have_posts())
+            {
+              while (have_posts())
+              {
+                the_post();
+                $propertyPrice = get_post_meta($post->ID, 'propertyPrice', true);
+                $propertySize = get_post_meta($post->ID, 'propertySize', true);
+                $bedRooms = get_post_meta($post->ID, 'bedRooms', true);
+                $bathRoom = get_post_meta($post->ID, 'bathRoom', true);
+                $propertyId = get_post_meta($post->ID, 'propertyId', true);
+                $availableDate = get_post_meta($post->ID, 'availableDate', true);
+                $propertyStatus = get_post_meta($post->ID, 'propertyStatus', true);
+                $builtYear = get_post_meta($post->ID, 'builtYear', true);
+                $propertyFloors = get_post_meta($post->ID, 'propertyFloors', true);
+                $propertyPluming = get_post_meta($post->ID, 'propertyPluming', true);
+                ?>
+                <div class="col-md-6 col-sm-6">
+                  <div class="property_item heading_space">
+                    <div class="image">
+                      <img style="width: 360px; height: 251px;" src="<?php the_post_thumbnail_url(); ?>" alt="listin" class="img-responsive">
+                      <div class="overlay">
+                        <div class="centered"><a class="link_arrow white_border" href="<?php the_permalink() ?>">View Detail</a></div>
+                      </div>
+                      
+                      <div class="price"><span class="tag"><?= $propertyStatus ?></span></div>
+                      <div class="property_meta">
+                        <span><i class="fa fa-object-group"></i><?= $propertySize ?> sq ft </span>
+                        <span><i class="fa fa-bed"></i><?= $bedRooms ?></span>
+                        <span><i class="fa fa-bath"></i><?= $bathRoom ?> Bathroom</span>
+                      </div>
+                    </div>
+                    <div class="proerty_content">
+                      <div class="proerty_text">
+                        <h3><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
+                        <span class="bottom10">Merrick Way, Miami, USA</span>
+                        <p class="p-font-15"> <?= get_excerpt() ?></p>
+                      </div>
+                      <div class="favroute clearfix">
+                        <p class="pull-md-left">&#8377;<?= $propertyPrice ?></p>
+                        
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <div class="property_item heading_space">
-                <div class="image">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-1.jpg" alt="listin" class="img-responsive">
-                  <div class="overlay">
-                    <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-                  </div>
-                 
-                  <div class="price"><span class="tag">For Sale</span></div>
-                  <div class="property_meta">
-                    <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                    <span><i class="fa fa-bed"></i>2</span>
-                    <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                  </div>
-                </div>
-                <div class="proerty_content">
-                  <div class="proerty_text">
-                    <h3><a href="property-details-3.html">House in New York City</a></h3>
-                    <span class="bottom10">Merrick Way, Miami, USA</span>
-                    <p><strong>$83,600,200</strong></p>
-                  </div>
-                  <div class="favroute clearfix">
-                    <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                    <ul class="pull-right">
-                      <li><a href="#."><i class="icon-video"></i></a></li>
-                      <li><a href="#."><i class="icon-like"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <div class="property_item heading_space">
-                <div class="image">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/property-listing-1.jpg" alt="listin" class="img-responsive">
-                  <div class="overlay">
-                    <div class="centered"><a class="link_arrow white_border" href="property-details-3.html">View Detail</a></div>
-                  </div>
-                  
-                  <div class="price"><span class="tag">For Sale</span></div>
-                  <div class="property_meta">
-                    <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                    <span><i class="fa fa-bed"></i>2</span>
-                    <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                  </div>
-                </div>
-                <div class="proerty_content">
-                  <div class="proerty_text">
-                    <h3><a href="property-details-3.html">House in New York City</a></h3>
-                    <span class="bottom10">Merrick Way, Miami, USA</span>
-                    <p><strong>$83,600,200</strong></p>
-                  </div>
-                  <div class="favroute clearfix">
-                    <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                    <ul class="pull-right">
-                      <li><a href="#."><i class="icon-video"></i></a></li>
-                      <li><a href="#."><i class="icon-like"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <?php
+              }
+            }
+            else
+            {
+              echo "No Property Found.";
+            }
+              ?>
+            
           </div>
-          <ul class="pager top40 padding_bottom">
-            <li><a href="#.">1</a></li>
-            <li class="active"><a href="#.">2</a></li>
-            <li><a href="#.">3</a></li>
-          </ul>
+          <?php 
+        
+        global $wp_query;
+$total = $wp_query->max_num_pages;
+// Only paginate if we have more than one page
+if ( $total > 1 )  {
+     // Get the current page
+     if ( !$current_page = get_query_var('paged') )
+          $current_page = 1;
+     // Structure of “format” depends on whether we’re using pretty permalinks
+     $format = empty( get_option('permalink_structure') ) ? '&page=%#%' : 'page/%#%/';
+     echo paginate_links(array(
+          'base' => get_pagenum_link(1) . '%_%',
+          'format' => $format,
+          'current' => $current_page,
+          'total' => $total,
+          'mid_size' => 4,
+          'type' => 'list'
+     ));
+}  
+        ?>
         </form>
       </div>
       <div class="col-md-4 colsm-4 col-xs-12">

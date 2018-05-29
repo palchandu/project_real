@@ -55,7 +55,7 @@
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
             <i class="fa fa-bars"></i></button>
-            <a class="navbar-brand sticky_logo" href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/images/logo1.png" class="logo" alt=""></a>
+            <a class="navbar-brand sticky_logo" href="<?php echo site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo1.png" class="logo" alt=""></a>
           </div>
           <!-- End Header Navigation --> 
 
