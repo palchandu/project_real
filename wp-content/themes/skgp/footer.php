@@ -1,14 +1,50 @@
+<!--===== CONTACT =====-->
+<section id="contact" class="bg-color-red">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+        <div class="get-tuch">
+          <i class="icon-telephone114"></i>
+          <ul>
+          <li> <h4>Phone Number</h4> </li>
+            <li>
+              <p class="p-font-15"><?php global $skgp_options; echo $skgp_options['contact_phone_number']; ?></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+        <div class="get-tuch">
+          <i class="icon-icons74"></i>
+          <?php global $skgp_options; echo $skgp_options['contact_location']; ?>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+        <div class="get-tuch">
+          <i class=" icon-icons142"></i>
+          <ul>
+          <li> <h4>Email Address</h4> </li>
+            <li>
+              <a href="mailto:help@getwebsoftware.com?subject=Enquiry"><p class="p-font-15"><?php global $skgp_options; echo $skgp_options['contact_email_addr']; ?></p></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--===== #/CONTACT =====-->
 <footer id="footer" class="footer divider layer-overlay overlay-dark-8">
-  <div class="container pt-70 pb-40">
+  <div class="container pt-70">
     <div class="row border-bottom">
       <div class="col-sm-6 col-md-4">
         <div class="widget dark">
-          <img class="mt-5 mb-20" alt="" src="images/logo.png">
-          <p>203, Name Labs, Behind Alis Steet, Melbourne, City Name.</p>
+          <img class="mt-5 mb-20" alt="" src="<?php global $skgp_options; echo $skgp_options['footer_logo']['url']; ?>">
+          <p><?php global $skgp_options; echo $skgp_options['footer_address']; ?></p>
           <ul class="list-inline mt-5">
-            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" href="#.">123-456-789</a> </li>
-            <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a class="text-gray" href="#.">contact@yourdomain.com</a> </li>
-            <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-color-2 mr-5"></i> <a class="text-gray" href="#.">www.yourdomain.com</a> </li>
+            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" href=""><?php global $skgp_options; echo $skgp_options['footer_phone']; ?></a> </li>
+            <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a class="text-gray" href=""><?php global $skgp_options; echo $skgp_options['footer_email']; ?></a> </li>
+            <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-color-2 mr-5"></i> <a class="text-gray" href=""><?php global $skgp_options; echo $skgp_options['footer_website']; ?></a> </li>
           </ul>
         </div>
       </div>
@@ -20,95 +56,53 @@
             <div class="line2 background-color-white"></div>
             <div class="clearfix"></div>
           </div>
-          <ul class="list angle-double-right list-border">
-            <li> <a href="#.">Home </a></li>
-            <li> <a href="#.">Services </a></li>
-            <li> <a href="#.">Pages</a></li>
-            <li> <a href="#.">About Us </a></li>
-            <li> <a href="#.">Blogs </a></li>
-            <li> <a href="#.">Portfolio </a></li>
-            <li> <a href="#.">Contact Us </a></li>
-          </ul>
+           <?php 
+            wp_nav_menu(array(
+              'theme_location'=>'footer_menu',
+              'container' => false,
+              'items_wrap' => '<ul class="list angle-double-right list-border">%3$s</ul>',
+              ));
+           
+            ?> 
+          
         </div>
       </div>
-      
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-1"></div>
+      <div class="col-sm-6 col-md-3">
         <div class="widget dark">
-          <h4 class="widget-title">Opening Hours</h4>
+          <h4 class="widget-title">Connect With Us</h4>
           <div class="small-title">
             <div class="line1 background-color-white"></div>
             <div class="line2 background-color-white"></div>
             <div class="clearfix"></div>
           </div>
           <div class="opening-hourse">
-            <ul class="list-border">
-              <li class="clearfix">
-                <span> Mon - Tues : </span>
-                <div class="value pull-right"> 6.00 am - 10.00 pm </div>
-              </li>
-              <li class="clearfix">
-                <span> Wednes - Thurs :</span>
-                <div class="value pull-right"> 8.00 am - 6.00 pm </div>
-              </li>
-              <li class="clearfix">
-                <span> Fri : </span>
-                <div class="value pull-right"> 3.00 pm - 8.00 pm </div>
-              </li>
-              <li class="clearfix">
-                <span> Sun : </span>
-                <div class="value pull-right"> Closed </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-30">
-      <div class="col-md-3 col-sm-4">
-        <div class="widget dark">
-          <h5 class="widget-title mb-10">Call Us Now</h5>
-          <div class="text-gray"> +61 3 1234 5678 <br>
-            +12 3 1234 5678 
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-4">
-        <div class="widget dark">
-          <h5 class="widget-title mb-10">Connect With Us</h5>
-          <ul class="socials">
-            <li><a href="#."><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#."><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#."><i class="fa fa-youtube"></i></a></li>
-            <li><a href="#."><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#."><i class="fa fa-pinterest"></i></a></li>
+            <ul class="socials">
+            <li><a href="<?php global $skgp_options; echo $skgp_options['connect_facebook']; ?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="<?php global $skgp_options; echo $skgp_options['connect_twitter']; ?>" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="<?php global $skgp_options; echo $skgp_options['connect_youtube']; ?>" target="_blank"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="<?php global $skgp_options; echo $skgp_options['connect_instagram']; ?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
           </ul>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-4 text-right">
-        <div class="mb20">
+          <div class="mb20">
           <form class="padding-top-30">
             <input class="search" placeholder="Enter your Email" type="search">
             <a href="#." class="button"><i class="icon-mail-envelope-open"></i></a>
           </form>
         </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="footer-bottom bg-black-333">
+  <div class="footer-bottom">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-5">
-          <p class="font-11 text-black-777 m-0 copy-right">Copyright: 2018 <a href="http://www.getwebsoftware.com/"><span class="color_red">GetWebSoftware</span></a>. All Rights Reserved</p>
+          <p class="font-11 text-black-777 m-0 copy-right"><?php global $skgp_options; echo $skgp_options['copy_right_year']; ?> <a href="<?php global $skgp_options; echo $skgp_options['copy_website_url']; ?>"><span class="color_red"><?php global $skgp_options; echo $skgp_options['copy_website_name']; ?></span></a>. <?php global $skgp_options; echo $skgp_options['copy_right_text']; ?></p>
         </div>
         <div class="col-md-6 col-sm-7 text-right">
           <div class="widget no-border m-0">
-            <ul class="list-inline sm-text-center mt-5 font-12">
-              <li> <a href="#.">FAQ</a> </li>
-              <li>|</li>
-              <li> <a href="#.">Help Desk</a> </li>
-              <li>|</li>
-              <li> <a href="#.">Support</a> </li>
-            </ul>
+           
           </div>
         </div>
       </div>
@@ -125,48 +119,24 @@
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">How can <span class="color_red">we help?</span></h2>
+        <h2 class="text-uppercase">Send us<span class="color_red"> a message </span></h2>
       </div>
 
       <div class="modal-body">
 
-        <p class="bottom40">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
 
         <div class="short-msg-tab"> 
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
               <div class="row">
-                <div class="col-md-12"><h3>Suggestion</h3></div>
-                <form class="callus padding-bottom" id="contact-form">
                 
-                  <div class="col-md-12">
-                        <div class="single-query">
-                            <input class="keyword-input" placeholder="Name" name="name" id="name" type="text">
-                        </div>
-                  </div>
-
-                   <div class="col-md-12">
-                        <div class="single-query">
-                            <input class="keyword-input" placeholder="E - mail" name="email" id="email" type="email">
-                        </div>
-                   </div>
-
-                   <div class="col-md-12">
-                        <div class="single-query">
-                            <textarea name="message" placeholder="Message" id="message"></textarea>
-                        </div>
-                   </div>
-                </form>
+                <?php echo do_shortcode('[contact-form-7 id="225" title="Contact form 1"]'); ?>
               </div>
             </div>
             
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="dark_border" data-dismiss="modal">Cancel Message</button>
-        <button type="button" class="btn_fill">Send Message</button>
       </div>
 
     </div>
@@ -174,6 +144,11 @@
 </div>
 <!-- #/Modal -->
 <?php wp_footer(); ?>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 </body>
 
 </html>

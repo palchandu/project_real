@@ -8,6 +8,8 @@ function add_bootstrap_admin()
 	/*Scripts*/
 	wp_enqueue_script('min_js','https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',null,'v1.0',true);
 
+	wp_enqueue_style('redux',get_template_directory_uri().'/css/redux.css',null,'v1.1.0','all');
+
 }
 add_action('admin_enqueue_scripts','add_bootstrap_admin');
 ?>

@@ -31,7 +31,7 @@
   <div id="header-bottom">
     <div class="container">
       <div class="row">
-        <div class="col-md-2 hidden-xs hidden-sm"><a href="<?php echo site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo-white2.png" alt="logo"/></a></div>
+        <div class="col-md-2 hidden-xs hidden-sm"><a href="<?php echo site_url(); ?>"><img src="<?php global $skgp_options; echo $skgp_options['site_logo_two']['url']; ?>" alt="logo"/></a></div>
         <div class="col-md-10 col-sm-12 col-xs-12">
           <div class="get-tuch text-left top20">
             <i class="icon-telephone114"></i>
@@ -40,21 +40,14 @@
                 <h4>Phone Number</h4>
               </li>
               <li>
-                <p>+1 900 234 567 - 68</p>
+                <p><?php global $skgp_options; echo $skgp_options['contact_phone_number']; ?></p>
               </li>
             </ul>
           </div>
           <div class="get-tech-line top20"><img src="<?php echo get_template_directory_uri(); ?>/images/get-tuch-line.png" alt="line"/></div>
           <div class="get-tuch text-left top20">
             <i class="icon-icons74"></i>
-            <ul>
-              <li>
-                <h4>Victoria Hall,</h4>
-              </li>
-              <li>
-                <p>Idea Homes Melbourne, australia</p>
-              </li>
-            </ul>
+            <?php global $skgp_options; echo $skgp_options['contact_location']; ?>
           </div>
           <div class="get-tech-line top20"><img src="<?php echo get_template_directory_uri(); ?>/images/get-tuch-line.png" alt="line"/></div>
           <div class="get-tuch text-left top20">
@@ -64,7 +57,7 @@
                 <h4>Email Address</h4>
               </li>
               <li>
-                <p><a href="#">info@ideahomes.com</a></p>
+                <p><a href="mailto:help@getwebsoftware.com?subject=Enquiry"><?php global $skgp_options; echo $skgp_options['contact_email_addr']; ?></a></p>
               </li>
             </ul>
           </div>
@@ -105,7 +98,7 @@
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
             <i class="fa fa-bars"></i></button>
-            <a class="navbar-brand sticky_logo" href="<?php echo site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo1.png" class="logo" alt=""></a>
+            <a class="navbar-brand sticky_logo" href="<?php echo site_url(); ?>"><img src="<?php  echo $skgp_options['site_logo_one']['url']; ?>" class="logo" alt=""></a>
           </div>
           <!-- End Header Navigation --> 
 
