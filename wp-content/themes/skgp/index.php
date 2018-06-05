@@ -109,6 +109,7 @@ get_header();
             $bedRooms = get_post_meta($post->ID, 'bedRooms', true);
             $bathRoom = get_post_meta($post->ID, 'bathRoom', true);
             $propertyStatus = get_post_meta($post->ID, 'propertyStatus', true);
+            $property_address=get_post_meta( $post->ID, 'property_address', true );
             ?>
             <div class="col-md-4 col-sm-6">
               <div class="property_item bottom40">
@@ -241,7 +242,7 @@ if ( $total > 1 )  {
 <!-- IMAGE WITH CONTENT -->
 
 <!-- PARTNER -->
-<div id="our-partner" class=" bg_light padding">
+<!-- <div id="our-partner" class=" bg_light padding">
   <div class="container">
     <div class="row mb-20">
         <div class="col-sm-1 col-md-2"></div>
@@ -279,7 +280,7 @@ if ( $total > 1 )  {
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- PARTNER -->
 
 <!-- FOOTER -->

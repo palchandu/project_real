@@ -25,7 +25,7 @@ function skgp_custom_box_html($post)
         $propertyFloors=get_post_meta( $post->ID, 'propertyFloors', true );
         $propertyPluming=get_post_meta( $post->ID, 'propertyPluming', true );
         $builtYear=get_post_meta( $post->ID, 'builtYear', true );
-        
+        $property_address=get_post_meta( $post->ID, 'property_address', true );
      ?>
     	<div class="col-sm-12 col-md-6 col-lg-6">
     		<div class="form-group">
@@ -53,9 +53,9 @@ function skgp_custom_box_html($post)
     		<div class="form-group">
     			<label for="property_status">Property Status</label>
     			<select class="form-control" name="property_status" id="property_status">
-    				<option value="For Sell">For Sell</option>
-    				<option value="For Rent">For Rent</option>
-    				<option value="Other">Other</option>
+    				<option <?php if(isset($propertyStatus)){ if($propertyStatus=="For Sell"){ ?> selected="selected" <?php } } ?> value="For Sell">For Sell</option>
+    				<option <?php if(isset($propertyStatus)){ if($propertyStatus=="For Rent"){ ?> selected="selected" <?php } } ?> value="For Rent">For Rent</option>
+    				<option <?php if(isset($propertyStatus)){ if($propertyStatus=="Other"){ ?> selected="selected" <?php } } ?> value="Other">Other</option>
     			</select>
     		</div>
     		<div class="form-group">
@@ -78,7 +78,7 @@ function skgp_custom_box_html($post)
     				if($i<=date('Y'))
     				{
     					?>
-    					<option value="<?= $i ?>"><?= $i ?></option>
+    					<option <?php if(isset($builtYear)){ if($builtYear==$i){ ?> selected="selected" <?php }} ?> value="<?= $i ?>"><?= $i ?></option>
     					<?php
     				}
     			}
@@ -86,6 +86,10 @@ function skgp_custom_box_html($post)
     			</select>
     		</div>
     	</div>
+        <div class="col-sm-12 col-lg-12 col-md-12">
+            <label for="property_address">Property Address</label>
+            <textarea class="form-control" rows="6" name="property_address" id="property_address"><?php echo esc_attr( $property_address ); ?></textarea>
+        </div>
     </div>
     
     
@@ -138,6 +142,9 @@ function skgp_property_save_meta( $post_id ) {
 
   if ( isset($_POST['built_year']) ) {        
     update_post_meta($post_id, 'builtYear',  sanitize_text_field($_POST['built_year']));      
+  }
+   if ( isset($_POST['property_address']) ) {        
+    update_post_meta($post_id, 'property_address',  sanitize_text_field($_POST['property_address']));      
   }
 
 }

@@ -82,7 +82,7 @@ get_header('common');
     
     <div class="contact">
       <div id="map_123">
-        <?php the_content() ?>
+        <?php $google_map = get_post_meta( $post->ID, 'contact_google_map', true ); echo $google_map; ?>
       </div>
     </div>
 </section>

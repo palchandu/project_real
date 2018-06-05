@@ -1,29 +1,26 @@
+<?php get_header('common');?>
 <?php
-get_header('common');
+$s=get_search_query();
+$args=array('s'=>$s);
+$the_query=new WP_Query($args);
 ?>
-<!--===== #/HEADER =====--> 
-
-
-<!-- PAGE TITLE -->
+      <!-- content -->
 <div class="page-title page-main-section parallaxie">
   <div class="container padding-bottom-top-120 text-uppercase text-center">
     <div class="main-title">
-      <h1> <?php echo category_description( $category_id ); ?></h1>
+      <h1> Search results for: <?= get_query_var('s')?></h1>
       <div class="line_4"></div>
       <div class="line_5"></div>
       <div class="line_6"></div>
     </div>
   </div>
 </div>
-<!-- PAGE TITLE -->
 
-
-<!-- LISTING STYLE-->
 <section id="agent-p-2" class="listing-1 bg_light padding_top">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <h2 class="uppercase">PROPERTY <span class="color_red">LISTINGS</span></h2>
+        <h2 class="uppercase">Serch <span class="color_red">Result</span></h2>
         <div class="line_1"></div>
         <div class="line_2"></div>
         <div class="line_3"></div>
@@ -34,15 +31,11 @@ get_header('common');
         <form class="findus">
           <div class="row">
           <?php
-          $current_cat_id  = get_query_var('cat');
-          $showposts = 10;
-          $args = array('cat' => $current_cat_id, 'orderby' => 'post_date', 'order' => 'DESC', 'posts_per_page' => $showposts,'post_status' => 'publish');
-          query_posts($args);
-            if (have_posts())
+            if ($the_query->have_posts())
             {
-              while (have_posts())
+              while ($the_query->have_posts())
               {
-                the_post();
+                $the_query->the_post();
                 $propertyPrice = get_post_meta($post->ID, 'propertyPrice', true);
                 $propertySize = get_post_meta($post->ID, 'propertySize', true);
                 $bedRooms = get_post_meta($post->ID, 'bedRooms', true);
@@ -132,10 +125,7 @@ if ( $total > 1 )  {
     </div>
   </div>
 </section>
-<!-- LISTING -->
 
-<!--FOOTER -->
 <?php
 get_footer();
 ?>
-

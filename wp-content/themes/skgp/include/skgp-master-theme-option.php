@@ -310,7 +310,7 @@
             'fields'=>array(
                 array(
                     'id'=>'site_logo_one',
-                    'title'=>'Logo One',
+                    'title'=>'Home  Page Logo',
                     'url'=>true,
                     'desc'=>'Upload your logo',
                     'type'=>'media',
@@ -320,12 +320,23 @@
                     ),
                 array(
                     'id'=>'site_logo_two',
-                    'title'=>'Logo Two',
+                    'title'=>'All Page Logo',
                     'url'=>true,
                     'desc'=>'Upload your logo',
                     'type'=>'media',
                     'default'=>array(
                         'url'=>get_template_directory_uri().'/images/logo-white2.png'
+                        )
+                    )
+                ,
+                array(
+                    'id'=>'site_favicon',
+                    'title'=>'SkGP Favicon',
+                    'url'=>true,
+                    'desc'=>'Upload your favicon',
+                    'type'=>'media',
+                    'default'=>array(
+                        'url'=>get_template_directory_uri().'/images/favicon.png'
                         )
                     )
                 )

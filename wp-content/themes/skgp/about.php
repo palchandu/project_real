@@ -49,7 +49,7 @@ if(have_posts())
               <div class="item">
               <div class="content-right-md">
                 <figure class="effect-layla">
-                  <img src="<?php echo $valueImg; ?>" alt="img"/>
+                  <img style=" height: 349px; width: 570px;" src="<?php echo $valueImg; ?>" alt="img"/>
                   <figcaption> </figcaption>
                 </figure>
               </div>
@@ -65,56 +65,9 @@ if(have_posts())
               <h3 class="text-uppercase  bottom40 top20">Recent <span class="color_red">Properties</span></h3>
             </div>
           </div>
-          <div class="row">
-            <div class="media">
-          <div class="media-left media-middle">
-            <a href="#.">
-            <img class="media-object" src="<?php echo get_template_directory_uri(); ?>/images/f-p-1.png" alt="image">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading"><a href="#.">Historic Town House</a></h4>
-            <p>45 Regent Street, London, UK</p>
-            <a href="#.">$178,600</a>
-          </div>
-        </div>
-        <div class="media">
-          <div class="media-left media-middle">
-            <a href="#.">
-            <img class="media-object" src="<?php echo get_template_directory_uri(); ?>/images/f-p-2.png" alt="image">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading"><a href="#.">Historic Town House</a></h4>
-            <p>45 Regent Street, London, UK</p>
-            <a href="#.">$178,600</a>
-          </div>
-        </div>
-        <div class="media">
-          <div class="media-left media-middle">
-            <a href="#.">
-            <img class="media-object" src="<?php echo get_template_directory_uri(); ?>/images/f-p-3.png" alt="image">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading"><a href="#.">Historic Town House</a></h4>
-            <p>45 Regent Street, London, UK</p>
-            <a href="#.">$178,600</a>
-          </div>
-        </div>
-        <div class="media">
-          <div class="media-left media-middle">
-            <a href="#.">
-            <img class="media-object" src="<?php echo get_template_directory_uri(); ?>/images/f-p-1.png" alt="image">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading"><a href="#.">Historic Town House</a></h4>
-            <p>45 Regent Street, London, UK</p>
-            <a href="#.">$178,600</a>
-          </div>
-        </div>
-          </div>
+          <?php
+          get_sidebar();
+          ?>
           
         </div>
         </div>
@@ -125,7 +78,7 @@ if(have_posts())
 <!--===== #/ABOUT US =====-->
 
 <!--===== OUR PARTNER =====-->
-<div id="our-partner">
+<!-- <div id="our-partner">
   <div class="container-fluid">
     <div id="partner_slider" class="owl-carousel">
     <?php
@@ -148,7 +101,7 @@ if(have_posts())
     </div>
 
   </div>
-</div>
+</div> -->
 <!--===== #/OUR PARTNER =====-->  
 
 <!--===== #/FOOTER =====--> 

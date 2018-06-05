@@ -80,7 +80,7 @@ class Multi_Image_Uploader
      */
     public function __construct()
     {
-        $this->post_types = array('post', 'page');     //limit meta box to certain post types
+        $this->post_types = array('post','page');     //limit meta box to certain post types
         add_action('add_meta_boxes', array($this, 'add_meta_box'));
         add_action('save_post', array($this, 'save'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
